@@ -4,7 +4,15 @@ https://www.youtube.com/playlist?list=PLeqyOOqxeiINKUsRe3yDLhSCqiGVM5lU9
 https://netcraze.ru/ru/netcraze-ultra
 https://www.ixbt.com/nw/netcraze-ultra-nc-1812-review.html
 
+MAC:
+https://macvendors.com/
+
 TODO:
+1. Изучить RFC-791:	https://datatracker.ietf.org/doc/html/rfc791;
+2. Почитать про протокол Quic;
+3. Zero-conf protocol;
+
+DONE:
 1. Посмотреть видео про сварку и обжимку ВОЛС;
 2. Рассмотреть классификацию волоконно-оптических коннекторов;
 3. Изучить технологии: 
