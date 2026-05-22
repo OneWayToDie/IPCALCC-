@@ -14,6 +14,13 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, IN
 
 BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	DWORD dwIPaddress = 0;
+	DWORD dwIPmask = 0;
+	DWORD dwIPprefix = 0;
+	HWND hIPaddress = GetDlgItem(hwnd, IDC_IP_ADDRESS);
+	HWND hIPmask = GetDlgItem(hwnd, IDC_IP_MASK);
+	HWND hIPprefix = GetDlgItem(hwnd, IDC_EDIT_PREFIX);
+	CHAR szIPprefix[3] = {};
 	switch (uMsg)
 	{
 	case WM_INITDIALOG:
@@ -22,15 +29,13 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		freopen("CONOUT$", "w", stdout);
 		std::cout << "Init" << std::endl;
 		break;
+	case WM_NOTIFY:
+	{
+
+	}
 	case WM_COMMAND:
 	{
-		DWORD dwIPaddress = 0;
-		DWORD dwIPmask = 0;
-		DWORD dwIPprefix = 0;
-		HWND hIPaddress = GetDlgItem(hwnd, IDC_IP_ADDRESS);
-		HWND hIPmask = GetDlgItem(hwnd, IDC_IP_MASK);
-		HWND hIPprefix = GetDlgItem(hwnd, IDC_EDIT_PREFIX);
-		CHAR szIPprefix[3] = {};
+
 		switch (LOWORD(wParam))
 		{
 		case IDC_IP_ADDRESS:
