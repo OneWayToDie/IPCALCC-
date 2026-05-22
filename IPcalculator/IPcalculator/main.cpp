@@ -24,16 +24,16 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_COMMAND:
 	{
+		DWORD dwIPaddress = 0;
+		DWORD dwIPmask = 0;
+		DWORD dwIPprefix = 0;
+		HWND hIPaddress = GetDlgItem(hwnd, IDC_IP_ADDRESS);
+		HWND hIPmask = GetDlgItem(hwnd, IDC_IP_MASK);
+		HWND hIPprefix = GetDlgItem(hwnd, IDC_EDIT_PREFIX);
 		switch (LOWORD(wParam))
 		{
 		case IDC_IP_ADDRESS:
 		{
-			DWORD dwIPaddress = 0;
-			DWORD dwIPmask = 0;
-			DWORD dwIPprefix = 0;
-			HWND hIPaddress = GetDlgItem(hwnd, IDC_IP_ADDRESS);
-			HWND hIPmask = GetDlgItem(hwnd, IDC_IP_MASK);
-			HWND hIPprefix = GetDlgItem(hwnd, IDC_EDIT_PREFIX);
 			if (HIWORD(wParam) == EN_CHANGE)
 			{
 				SendMessage(hIPaddress, IPM_GETADDRESS, 0, (LPARAM)&dwIPaddress);
