@@ -49,6 +49,14 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			}
 		}
 		break;
+		case IDC_IP_MASK:
+		{
+			if (HIWORD(wParam) == EN_CHANGE)
+			{
+
+			}
+		}
+		break;
 		case IDOK:
 			break;
 		case IDCANCEL:EndDialog(hwnd, 0);
