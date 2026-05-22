@@ -30,6 +30,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		HWND hIPaddress = GetDlgItem(hwnd, IDC_IP_ADDRESS);
 		HWND hIPmask = GetDlgItem(hwnd, IDC_IP_MASK);
 		HWND hIPprefix = GetDlgItem(hwnd, IDC_EDIT_PREFIX);
+		CHAR szIPprefix[3] = {};
 		switch (LOWORD(wParam))
 		{
 		case IDC_IP_ADDRESS:
@@ -43,7 +44,6 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				else if (FIRST_IPADDRESS(dwIPaddress) < 224)dwIPmask = 0xFFFFFF00, dwIPprefix = 24;
 				std::cout << dwIPmask << std::endl;
 				SendMessage(hIPmask, IPM_SETADDRESS, 0, dwIPmask);
-				CHAR szIPprefix[3] = {};
 				sprintf(szIPprefix, "%i", dwIPprefix);
 				SendMessage(hIPprefix, WM_SETTEXT, 0, (LPARAM)szIPprefix);
 			}
@@ -53,7 +53,9 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		{
 			if (HIWORD(wParam) == EN_CHANGE)
 			{
-
+				SendMessage(hIPmask, IPM_GETADDRESS, 0, (LPARAM)&dwIPmask);
+				dwIPprefix = 0;
+				for (dwIPprefix = 0; dwIPmask; dwIPprefix++)dwIPmask << 1;
 			}
 		}
 		break;
